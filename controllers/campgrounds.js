@@ -4,12 +4,11 @@ const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 const { cloudinary } = require("../cloudinary");
 
-
 module.exports.index = async (req, res) => {
+    // No need to populate 'popupText' since it does not exist in the schema
     const campgrounds = await Campground.find({});
     res.render('campgrounds/index', { campgrounds });
 }
-
 
 module.exports.renderNewForm = (req, res) => {
     res.render('campgrounds/new');
